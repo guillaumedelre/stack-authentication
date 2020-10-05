@@ -11,7 +11,7 @@
 **/docker-compose.*.yaml
 **/docker-compose.*.yml
 **/docker-compose.yaml
-**/docker-compose.yml
+docker-compose.yaml
 **/Dockerfile
 **/Thumbs.db
 .editorconfig
@@ -26,3 +26,4 @@ helm/
 public/bundles/
 var/
 vendor/
+!/config/jwt/

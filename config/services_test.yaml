@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\Behat\:
+        resource: '../tests/Behat/*'
+        exclude:
+            - '../tests/Behat/Context/BackgroundContext.php'
+            - '../tests/Behat/Context/JsonContext.php'
+            - '../tests/Behat/Context/JwtContext.php'
+
+    _instanceof:
+        Symfony\Component\DependencyInjection\ContainerAwareInterface:
+            calls:
+                - ['setContainer', ['@service_container']]

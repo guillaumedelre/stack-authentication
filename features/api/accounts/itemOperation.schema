@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/Account:jsonld",
+    "definitions": {
+        "Account:jsonld": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "@context": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "@id": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "@type": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "id": {
+                    "readOnly": true,
+                    "externalDocs": {
+                        "url": "http://schema.org/identifier"
+                    },
+                    "type": "string",
+                    "format": "uuid",
+                    "nullable": true
+                },
+                "email": {
+                    "externalDocs": {
+                        "url": "http://schema.org/email"
+                    },
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "username": {
+                    "readOnly": true,
+                    "description": "A visual identifier that represents this user.",
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "plainPassword": {
+                    "description": "The readable password",
+                    "type": "string",
+                    "nullable": true
+                },
+                "password": {
+                    "description": "The hashed password",
+                    "type": "string"
+                },
+                "salt": {
+                    "readOnly": true
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "email",
+                "fullname"
+            ]
+        }
+    }
+}

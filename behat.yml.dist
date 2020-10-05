@@ -1,0 +1,68 @@
+default:
+    formatters:
+        pretty:
+            verbose: true
+            snippets: true
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+            kernel:
+                environment: test
+                debug: true
+                class: App\Kernel
+        Behat\MinkExtension:
+            files_path: '%paths.base%/tests/fixtures'
+            sessions:
+                default:
+                    symfony: ~
+        Behatch\Extension: ~
+        rdx\behatvars\BehatVariablesExtension: ~
+    suites:
+        api:
+            paths: [ "%paths.base%/features/api" ]
+            contexts:
+                - 'Behat\MinkExtension\Context\MinkContext'
+                - 'App\Tests\Behat\Context\BackgroundContext':
+                    request: '@behatch:behatch.http_call.request'
+                - 'App\Tests\Behat\Context\DatabaseContext'
+                - 'App\Tests\Behat\Context\JwtContext'
+                - 'App\Tests\Behat\Context\JsonContext':
+                    httpCallResultPool: '@behatch:behatch.http_call.result_pool'
+                - 'behatch:context:rest'
+                - 'behatch:context:json'
+                - 'rdx\behatvars\BehatVariablesContext'
+
+#report:
+#    extensions:
+#        DVDoug\Behat\CodeCoverage\Extension:
+#            filter:
+#                include:
+#                    directories:
+#                        src: ~
+#                exclude:
+#                    directories:
+#                        src/Entity: ~
+#                        src/Repository: ~
+#                    files:
+#                        - 'src/Kernel.php'
+#            reports:
+#                clover:
+#                    name: 'Authentication Suite Coverage'
+#                    target: var/build/coverage/status/clover.xml
+#                php:
+#                    target: var/build/coverage/status/clover.cov
+#                crap4j:
+#                    name: 'Authentication Suite Crap'
+#                    target: var/build/coverage/status/crap4j.xml
+#                html:
+#                    target: var/build/coverage/status
+#    suites:
+#        api:
+#            paths: [ "%paths.base%/features/api" ]
+#            contexts:
+#                - Behat\MinkExtension\Context\MinkContext
+#                - App\Tests\Behat\DatabaseContext
+#                - App\Tests\Behat\BackgroundContext:
+#                    request: '@behatch.http_call.result_pool'
+#                - behatch:context:rest
+#                - behatch:context:json

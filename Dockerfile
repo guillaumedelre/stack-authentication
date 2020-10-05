@@ -18,6 +18,7 @@ RUN apk add --no-cache \
         gettext \
         git \
         jq \
+        postgresql-dev \
     ;
 
 ARG APCU_VERSION=5.1.18
@@ -33,6 +34,8 @@ RUN set -eux; \
 	docker-php-ext-install -j$(nproc) \
 	    intl \
 	    zip \
+	    pdo \
+	    pdo_pgsql \
 	; \
 	pecl install \
 	    apcu-${APCU_VERSION} \
