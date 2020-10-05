@@ -1,0 +1,20 @@
+App\Entity\Account:
+    attributes:
+        id:
+            groups:
+                - 'api:account:get'
+        fullname:
+            groups:
+                - 'api:account:get'
+        email:
+            groups:
+                - 'api:account:get'
+        roles:
+            groups:
+                - 'api:account:get'
+        password:
+            groups:
+                - 'api:account:get'
+        plainPassword:
+            groups:
+                - 'api:account:get'

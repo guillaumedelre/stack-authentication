@@ -14,7 +14,28 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     attributes={"order"={"email": "ASC"}}
+ *     attributes={"order"={"email": "ASC"}},
+ *     normalizationContext={"groups"={"api:account:get"}},
+ *     itemOperations={
+ *         "get""={
+ *             "method"="get"
+ *         },
+ *         "put"={
+ *             "method"="put",
+ *             "denormalization_context"={"groups"={"api:account:put"}}
+ *         },
+ *         "patch"={
+ *             "denormalization_context"={"groups"={"api:account:patch"}}
+ *         }
+ *     },
+ *     collectionOperations={
+ *         "get""={
+ *             "method"="get"
+ *         },
+ *         "post"={
+ *             "denormalization_context"={"groups"={"api:account:post"}}
+ *         }
+ *     }
  * )
  * @ORM\Entity(repositoryClass=AccountRepository::class)
  * @ORM\Table(name="account")

@@ -1,4 +1,6 @@
 api_platform:
+    description: >
+        ![stack api authentication](//localhost/stack.svg)
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
